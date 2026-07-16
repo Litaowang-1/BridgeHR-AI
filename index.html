@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BridgeHR AI synthetic-data MVP for workforce document compliance." />
+    <title>BridgeHR AI — Compliance Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="privacy-strip">
+      <span class="privacy-dot"></span>
+      Demo-safe workspace · synthetic records only · do not upload personal data
+    </div>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="BridgeHR AI home">
+          <span class="brand-mark">B</span>
+          <span><strong>BridgeHR</strong><small>AI Compliance</small></span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <button class="nav-item active" data-view="dashboard"><span>⌂</span>Overview</button>
+          <button class="nav-item" data-view="workforce"><span>◎</span>Workforce</button>
+          <button class="nav-item" data-view="compliance"><span>◇</span>Compliance</button>
+          <button class="nav-item" data-view="assistant"><span>✦</span>AI Assistant</button>
+          <button class="nav-item" data-view="notifications"><span>↗</span>Notices</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="eyebrow">Demo environment</span>
+          <strong>Privacy guard active</strong>
+          <p>All names and document numbers are fictional.</p>
+          <a href="PRIVACY.md">Read data policy →</a>
+        </div>
+
+        <div class="user-chip">
+          <span class="avatar">DW</span>
+          <span><strong>Demo Workspace</strong><small>Build Week 2026</small></span>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">International project workspace</span>
+            <h1 id="page-title">Good morning</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-btn" aria-label="Notifications">○<span class="notification-dot"></span></button>
+            <button class="primary-btn" data-open-assistant>✦ Ask BridgeHR AI</button>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboard-view">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <span class="status-pill">● Compliance overview updated</span>
+              <h2>Know what needs attention<br />before it becomes a risk.</h2>
+              <p>One focused view for passports, visas, work permits and residence documents across an international workforce.</p>
+              <div class="hero-actions">
+                <button class="primary-btn" data-open-assistant>Ask about compliance</button>
+                <button class="secondary-btn" data-view-link="workforce">View demo records</button>
+              </div>
+            </div>
+            <div class="compliance-score" aria-label="Overall compliance score 94 percent">
+              <div class="score-ring"><span><strong>94%</strong><small>compliant</small></span></div>
+              <div><strong>Healthy portfolio</strong><small>3 records need action</small></div>
+            </div>
+          </div>
+
+          <div class="metrics-grid" id="metrics-grid"></div>
+
+          <div class="content-grid">
+            <section class="panel attention-panel">
+              <div class="panel-heading">
+                <div><span class="eyebrow">Priority queue</span><h3>Needs attention</h3></div>
+                <button class="text-btn" data-view-link="compliance">See all →</button>
+              </div>
+              <div id="attention-list"></div>
+            </section>
+
+            <section class="panel activity-panel">
+              <div class="panel-heading">
+                <div><span class="eyebrow">Next 90 days</span><h3>Expiry outlook</h3></div>
+              </div>
+              <div class="bar-chart" id="bar-chart"></div>
+              <div class="chart-legend"><span><i class="legend-blue"></i>Expiring</span><span><i class="legend-green"></i>Renewal started</span></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="workforce-view">
+          <div class="section-heading">
+            <div><span class="eyebrow">Synthetic dataset</span><h2>Workforce documents</h2><p>Fictional records created exclusively for this public demo.</p></div>
+            <button class="secondary-btn" id="export-demo">Export demo CSV</button>
+          </div>
+          <section class="panel table-panel">
+            <div class="toolbar">
+              <label class="search-box">⌕<input id="record-search" type="search" placeholder="Search demo ID, role or nationality" /></label>
+              <select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="Compliant">Compliant</option><option value="Expiring soon">Expiring soon</option><option value="Action required">Action required</option></select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Demo employee</th><th>Role</th><th>Nationality</th><th>Document</th><th>Expiry</th><th>Status</th></tr></thead>
+                <tbody id="records-body"></tbody>
+              </table>
+            </div>
+            <p class="data-caption">No real employee, passport, permit, visa, contact, medical or identification data is included.</p>
+          </section>
+        </section>
+
+        <section class="view" id="compliance-view">
+          <div class="section-heading">
+            <div><span class="eyebrow">Risk center</span><h2>Compliance action plan</h2><p>Prioritized actions derived only from the fictional demo dataset.</p></div>
+            <button class="primary-btn" data-view-link="notifications">Generate notices</button>
+          </div>
+          <div class="risk-grid" id="risk-grid"></div>
+          <section class="panel">
+            <div class="panel-heading"><div><span class="eyebrow">Recommended workflow</span><h3>This week’s actions</h3></div></div>
+            <div class="timeline" id="action-timeline"></div>
+          </section>
+        </section>
+
+        <section class="view" id="assistant-view">
+          <div class="assistant-layout">
+            <section class="assistant-intro">
+              <span class="status-pill">✦ Demo intelligence</span>
+              <h2>Ask your workforce data,<br />in plain language.</h2>
+              <p>The MVP answers a controlled set of compliance questions using only the synthetic records bundled with this repository.</p>
+              <div class="safe-card"><strong>Safe by design</strong><p>No external model or third-party service receives the demo data in this version.</p></div>
+            </section>
+            <section class="chat-panel">
+              <div class="chat-header"><span class="brand-mark small">B</span><span><strong>BridgeHR Assistant</strong><small>Demo mode · synthetic data</small></span></div>
+              <div class="chat-messages" id="chat-messages">
+                <div class="message assistant-message"><span class="message-icon">✦</span><div><p>Welcome. I can summarize expiry risks, missing documents and renewal priorities in the demo workspace.</p><small>BridgeHR AI · just now</small></div></div>
+              </div>
+              <div class="prompt-chips">
+                <button>What expires in 30 days?</button><button>Show missing documents</button><button>Summarize compliance risks</button>
+              </div>
+              <form class="chat-form" id="chat-form"><input id="chat-input" autocomplete="off" placeholder="Ask a question about the synthetic records…" /><button type="submit">Send ↑</button></form>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="notifications-view">
+          <div class="section-heading">
+            <div><span class="eyebrow">Multilingual communication</span><h2>Notice generator</h2><p>Create a clear renewal reminder in English, French or Chinese using fictional values.</p></div>
+          </div>
+          <div class="notice-layout">
+            <section class="panel notice-form">
+              <label>Demo recipient<select id="notice-recipient"></select></label>
+              <label>Notice type<select id="notice-type"><option>Passport renewal</option><option>Visa renewal</option><option>Work permit follow-up</option><option>Missing document request</option></select></label>
+              <label>Language<select id="notice-language"><option value="en">English</option><option value="fr">Français</option><option value="zh">中文</option></select></label>
+              <button class="primary-btn full" id="generate-notice">Generate notice</button>
+              <p class="form-note">Generated text is for demonstration only and must be reviewed before operational use.</p>
+            </section>
+            <section class="panel notice-preview">
+              <div class="panel-heading"><div><span class="eyebrow">Preview</span><h3>Renewal reminder</h3></div><button class="text-btn" id="copy-notice">Copy</button></div>
+              <div id="notice-output" class="notice-copy"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
