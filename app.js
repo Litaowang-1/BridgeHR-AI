@@ -11,7 +11,7 @@ const records = [
 
 const metrics = [
   { icon: "◎", label: "Demo employees", value: records.length, note: "100% fictional" },
-  { icon: "✓", label: "Compliant records", value: 5, note: "+2 this month" },
+  { icon: "✓", label: "Compliant records", value: 4, note: "current demo status" },
   { icon: "◷", label: "Expiring soon", value: 2, note: "within 30 days" },
   { icon: "!", label: "Action required", value: 2, note: "prioritize today" }
 ];
@@ -53,7 +53,7 @@ function renderCompliance() {
   const risks = [
     { level:"high", icon:"!", title:"2 urgent actions", copy:"One residence document is nearing expiry and one record is incomplete." },
     { level:"medium", icon:"◷", title:"2 renewals due", copy:"Two fictional documents enter the 30-day renewal window." },
-    { level:"low", icon:"✓", title:"5 records healthy", copy:"No immediate action is required for five demo records." }
+    { level:"low", icon:"✓", title:"4 records healthy", copy:"No immediate action is required for four demo records." }
   ];
   document.querySelector("#risk-grid").innerHTML = risks.map(r => `<article class="risk-card ${r.level}"><span>${r.icon}</span><h3>${r.title}</h3><p>${r.copy}</p></article>`).join("");
   const actions = [
@@ -77,7 +77,7 @@ function assistantAnswer(question) {
   const q = question.toLowerCase();
   if (q.includes("30") || q.includes("expire")) return "Two demo records expire within the next 30 days: DEMO-EMP-001 (passport) and DEMO-EMP-003 (residence permit). DEMO-EMP-005 follows shortly after the 30-day window.";
   if (q.includes("missing") || q.includes("incomplete")) return "DEMO-EMP-008 has an incomplete residence permit record. The document number and expiry date are intentionally marked as not provided in this synthetic dataset.";
-  if (q.includes("risk") || q.includes("summary") || q.includes("compliance")) return "The demo portfolio is 94% compliant. Priorities are the urgent residence-permit follow-up for DEMO-EMP-003, completion of DEMO-EMP-008, and two planned renewals. No real employee data was used for this summary.";
+  if (q.includes("risk") || q.includes("summary") || q.includes("compliance")) return "The demo portfolio has four compliant records. Priorities are the urgent residence-permit follow-up for DEMO-EMP-003, completion of DEMO-EMP-008, and two planned renewals. No real employee data was used for this summary.";
   if (q.includes("visa")) return "Both fictional visa records are currently compliant: DEMO-EMP-004 expires on 2026-10-08 and DEMO-EMP-007 expires on 2026-12-03.";
   return "I can help with expiry windows, missing documents, visa status and a compliance risk summary. This MVP intentionally limits answers to the bundled synthetic dataset.";
 }

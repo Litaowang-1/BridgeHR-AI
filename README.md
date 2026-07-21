@@ -2,7 +2,16 @@
 
 BridgeHR AI is an AI-assisted workforce identity and compliance workspace for international construction projects. It helps HR and Administration teams monitor passports, visas, work permits and residence documents through a focused dashboard, prioritized risk view and multilingual communication tools.
 
-The current Build Week MVP is a self-contained browser demo. It uses a fictional workforce dataset and does not require an API key, database or external AI service.
+The current Build Week MVP is a self-contained browser demo. It uses a fictional workforce dataset and does not require an API key, database, package installation or external AI service.
+
+## Project status
+
+- **Current release:** `v0.1.0` public MVP
+- **Maintenance focus:** documentation, accessibility and demo stability
+- **Data boundary:** synthetic records only; not approved for production HR data
+
+See [PROJECT_STATUS.md](PROJECT_STATUS.md), [ROADMAP.md](ROADMAP.md) and
+[CHANGELOG.md](CHANGELOG.md) for the latest maintenance context.
 
 ## MVP features
 
@@ -22,17 +31,36 @@ Do not commit real names, passport or permit numbers, dates of birth, contact de
 
 The MVP is not approved for production HR data. See [PRIVACY.md](PRIVACY.md) for the full contribution and production-boundary rules.
 
-## Run locally
+## Run the demo
 
-No installation is required. Open `index.html` in a modern browser, or serve the folder with any static web server.
+No installation or environment configuration is required.
 
-Example with Python:
+1. Clone the repository and enter the project folder.
+2. Start a static web server:
 
 ```bash
+git clone https://github.com/Litaowang-1/BridgeHR-AI.git
+cd BridgeHR-AI
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173`.
+3. Open `http://localhost:4173` in a modern browser.
+
+Opening `index.html` directly also works for basic use. A local server is
+recommended when checking browser behavior consistently.
+
+## Basic validation
+
+This static MVP has no dependency installation or build step. Before opening a
+pull request, run:
+
+```bash
+git diff --check
+node --check app.js
+```
+
+Then verify navigation, workforce search and filters, assistant prompts, notice
+generation, copy behavior and CSV export in the browser.
 
 ## Contributing
 
@@ -45,11 +73,13 @@ privacy safeguards and international workforce-compliance workflows. Read
 
 ```text
 BridgeHR-AI/
-├── index.html      # Application structure and accessible content
-├── styles.css      # Responsive product interface
-├── app.js          # Synthetic dataset and demo interactions
-├── PRIVACY.md      # Privacy and data-safety requirements
-└── vercel.json     # Static deployment and security headers
+├── index.html         # Application structure and accessible content
+├── styles.css         # Responsive product interface
+├── app.js             # Synthetic dataset and demo interactions
+├── PROJECT_STATUS.md  # Current release and maintenance focus
+├── PRIVACY.md         # Privacy and data-safety requirements
+├── SECURITY.md        # Security policy and reporting guidance
+└── vercel.json        # Static deployment and security headers
 ```
 
 ## Built with Codex and GPT-5.6
@@ -71,10 +101,6 @@ GPT-5.6 supports product scoping, workflow design, user-experience decisions, mu
 ## Important limitation
 
 The assistant in this MVP uses deterministic, local demo responses. It demonstrates the intended user experience but does not yet call an external AI model. This keeps the public demo safe, predictable and usable without credentials.
-
-## Status
-
-Active Build Week MVP development.
 
 ## License
 
